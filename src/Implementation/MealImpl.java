@@ -1,5 +1,6 @@
 package Implementation;
 
+import API.MealBuilder;
 import API.Meal;
 
 public class MealImpl implements Meal {
@@ -8,27 +9,27 @@ public class MealImpl implements Meal {
     private String location;           // Optional
     private double budget;              // Optional
 
-    private MealImpl(MeatBuilder builder){
+    private MealImpl(MealBuilderImpl builder){
         this.numberOfPersons = builder.numberOfPersons;
         this.location = builder.location;
         this.budget = builder.budget;
     }
 
-    public static class MeatBuilder{
+    public static class MealBuilderImpl implements MealBuilder {
         private int numberOfPersons;       // Mandatory
         private String location = "<none defined>";           // Optional
         private double budget = 0;              // Optional
 
-        public MeatBuilder (int numberOfPersons){
+        public MealBuilderImpl (int numberOfPersons){
             this.numberOfPersons = numberOfPersons;
         }
 
-        public MeatBuilder setLocation(String location){
+        public MealBuilder setLocation(String location){
             this.location = location;
             return this;
         }
 
-        public MeatBuilder setBudget(double budget){
+        public MealBuilder setBudget(double budget){
             this.budget = budget;
             return this;
         }
